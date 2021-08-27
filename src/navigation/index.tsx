@@ -25,6 +25,7 @@ const RootStack = () => {
                 ...TransitionPresets.SlideFromRightIOS,
             }}
         >
+            {/* Main Screen */}
             <Stack.Screen
                 name='AllDrops'
                 component={AllDrops}
@@ -36,7 +37,7 @@ const RootStack = () => {
                     },
                 }}
             />
-
+            {/* Main Screen -> Add Drop Screen */}
             <Stack.Screen
                 name='AddDrop'
                 component={AddDrop}
@@ -48,6 +49,7 @@ const RootStack = () => {
                     },
                 }}
             />
+            {/* Main Screen -> View Drop Screen */}
             <Stack.Screen
                 name='ViewDrop'
                 component={ViewDrop}
@@ -59,6 +61,7 @@ const RootStack = () => {
                     },
                 }}
             />
+            {/* Main Screen -> View Drop Screen -> Edit Drop Screen */}
             <Stack.Screen
                 name='EditDrop'
                 component={EditDrop}
