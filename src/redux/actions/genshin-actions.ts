@@ -3,7 +3,7 @@ import axios from "../../../axiosConfig";
 import IItem from "../../entities/item";
 import { AppActions } from "./actions";
 
-const GetAllDrops = () => async (dispatch: Dispatch) => {
+export const GetAllDrops = () => async (dispatch: Dispatch) => {
     try {
         // axios request
         const res = await axios.get('/all');
@@ -16,7 +16,7 @@ const GetAllDrops = () => async (dispatch: Dispatch) => {
     }
 }
 
-const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
+export const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         // axios request
         const res = await axios.get(`/${item.dropName}`);
@@ -29,7 +29,7 @@ const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-const AddDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const AddDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         // axios request
         await axios.post('/', item);
@@ -43,7 +43,7 @@ const AddDrop = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-const UpdateDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const UpdateDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         await axios.put('/', {...item});
         const res = await axios.get('/all');
@@ -56,7 +56,7 @@ const UpdateDrop = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-const DeleteDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const DeleteDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         await axios.delete(`/${item.dropName}`);
         const res = await axios.get('/all');

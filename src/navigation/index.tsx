@@ -3,10 +3,19 @@ import AddDrop from "../screens/AddDrop";
 import AllDrops from "../screens/AllDrops";
 import ViewDrop from "../screens/ViewDrop";
 import EditDrop from "../screens/EditDrop";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { GetAllDrops } from "../redux/actions/genshin-actions";
 
 const Stack = createStackNavigator();
 
 const RootStack = () => {
+    // Load in Item Drops to Redux Store
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(GetAllDrops());
+    }, [dispatch]);
+
     return(
         <Stack.Navigator
             initialRouteName='AllDrops'
