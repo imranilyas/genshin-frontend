@@ -6,13 +6,14 @@ import EditDrop from "../screens/EditDrop";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { GetAllDrops } from "../redux/actions/genshin-actions";
+import React from "react";
 
 const Stack = createStackNavigator();
 
 const RootStack = () => {
     // Load in Item Drops to Redux Store
     const dispatch = useDispatch();
-    useEffect(() => {
+    React.useEffect(() => {
         dispatch(GetAllDrops());
     }, [dispatch]);
 

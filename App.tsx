@@ -5,19 +5,29 @@ import { Reducer } from './src/redux/reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { NavigationContainer } from '@react-navigation/native';
+import RootStack from './src/navigation';
 
 export type RootStore = ReturnType<typeof Reducer>
 
 export default function App() {
-
-  const store = createStore(Reducer, applyMiddleware(thunk));
+  // holds state tree and applies thunk - allows the return of functions asynchronously
+  // composeWithDevTools allows for stronger debugging tools if run in the web
+  const store = createStore(Reducer, composeWithDevTools(applyMiddleware(thunk)));
 
   return (
     <Provider store = {store}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
+      <NavigationContainer>
         <StatusBar style="auto" />
-      </View>
+        <RootStack />
+        {/*         
+        <View style={styles.container}>
+          <Text>Open up App.tsx to start working on your app!</Text>
+          <StatusBar style="auto" />
+        </View> 
+        */}
+      </NavigationContainer>
     </Provider>
   );
 }
