@@ -29,7 +29,7 @@ export const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-export const AddDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const addDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         // axios request
         await axios.post('/', item);
@@ -43,7 +43,7 @@ export const AddDrop = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-export const UpdateDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const updateDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         await axios.put('/', {...item});
         const res = await axios.get('/all');
@@ -56,7 +56,7 @@ export const UpdateDrop = (item: IItem) => async (dispatch: Dispatch) => {
     }
 }
 
-export const DeleteDrop = (item: IItem) => async (dispatch: Dispatch) => {
+export const deleteDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         await axios.delete(`/${item.dropName}`);
         const res = await axios.get('/all');

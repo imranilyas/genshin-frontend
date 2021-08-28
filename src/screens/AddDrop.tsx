@@ -3,6 +3,7 @@ import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-nativ
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
+import { addDrop } from "../redux/actions/genshin-actions";
 
 const AddDrop: React.FC = () => {
     // hooks for text inputs
@@ -18,6 +19,7 @@ const AddDrop: React.FC = () => {
     const navigation = useNavigation<main>();
 
     const submit = () => {
+        
         navigation.goBack();
     }
 
@@ -26,30 +28,30 @@ const AddDrop: React.FC = () => {
             <Text>Add Drop Screen</Text>
             <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
             <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
-            <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Name of Item Drop Set">{generalName}</TextInput>
+            <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
             {/* Will need to work on this */}
             <TextInput style = {styles.input} 
             onChangeText={(value) => monsters.push(value)} 
-            placeholder="" 
+            placeholder="Monsters" 
             />
             
             <TextInput 
             style = {styles.input} 
             onChangeText={(value) => setMinWorldRank(Number(value))} 
-            placeholder="" 
+            placeholder="Minimum World Rank" 
             keyboardType='numeric'
             />
             <TextInput 
             style = {styles.input} 
             onChangeText={(value) => setDropRate(Number(value))} 
-            placeholder="" 
+            placeholder="Drop Rate (%)" 
             keyboardType='numeric'
             />
             
-            <TextInput style = {styles.input} onChangeText={setRarity} placeholder="">{rarity}</TextInput>
+            <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
             {/* Submit Button */}
             <TouchableOpacity style = {styles.button} onPress = {submit}>
-                <Text>Submit</Text>
+                <Text style = {styles.buttonText}>Submit</Text>
             </TouchableOpacity>
         </View>
     )
@@ -63,10 +65,17 @@ const styles = StyleSheet.create({
 
     input: {
         fontSize: 20,
+        backgroundColor: 'green',
+        padding: '2%',
+        margin: '2%',
     },
 
     button: {
-        backgroundColor: 'black',
+        backgroundColor: 'grey',
+    },
+
+    buttonText: {
+        textAlign: 'center',
     },
 })
 

@@ -8,11 +8,6 @@ const AllDrops: React.FC = () => {
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
 
-    //! to be removed
-    const add = () => {
-        navigation.navigate('AddDrop');
-    }
-    
     return (
         <View style = {styles.container}>
             <Text>All Drops Screen</Text>
@@ -30,7 +25,7 @@ const styles = StyleSheet.create({
     },
     list: {},
     buttons: {
-        backgroundColor: 'black',
+        backgroundColor: 'grey',
     },
 })
 
