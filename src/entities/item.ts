@@ -1,6 +1,6 @@
 interface IItem {
     dropName: string,
-    //dropPhoto: string, //!need to add to backend and DB
+    photo: string,
     generalName: string,
     monster: string[],
     dropRate: number,

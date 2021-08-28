@@ -32,7 +32,7 @@ export const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
 export const addDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         // axios request
-        await axios.post('/', item);
+        await axios.post('/', { ...item });
         const res = await axios.get('/all');
         dispatch({
             type: AppActions.UPDATE_ITEM,
