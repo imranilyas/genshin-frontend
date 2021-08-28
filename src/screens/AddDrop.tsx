@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigation/stackTypes";
+import { useNavigation } from "@react-navigation/native";
 
 const AddDrop: React.FC = () => {
     // hooks for text inputs
@@ -10,6 +13,13 @@ const AddDrop: React.FC = () => {
     const [minWorldRank, setMinWorldRank] = useState(0);
     const [dropRate, setDropRate] = useState(0);
     const [rarity, setRarity] = useState('');
+
+    type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
+    const navigation = useNavigation<main>();
+
+    const submit = () => {
+        navigation.goBack();
+    }
 
     return(
         <View style = {styles.container}>
@@ -37,6 +47,10 @@ const AddDrop: React.FC = () => {
             />
             
             <TextInput style = {styles.input} onChangeText={setRarity} placeholder="">{rarity}</TextInput>
+            {/* Submit Button */}
+            <TouchableOpacity style = {styles.button} onPress = {submit}>
+                <Text>Submit</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -49,6 +63,10 @@ const styles = StyleSheet.create({
 
     input: {
         fontSize: 20,
+    },
+
+    button: {
+        backgroundColor: 'black',
     },
 })
 
