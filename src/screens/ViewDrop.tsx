@@ -7,10 +7,6 @@ import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { deleteDrop } from "../redux/actions/genshin-actions";
 
-interface IProps {
-    item: IItem,
-}
-
 const ViewDrop: React.FC = () => {
     // Navigation
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>

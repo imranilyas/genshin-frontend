@@ -8,25 +8,30 @@ import IItem from "../entities/item";
 import { updateDrop } from "../redux/actions/genshin-actions";
 
 const EditDrop: React.FC = () => {
-    // hooks for text inputs
-    const [photo, setPhoto] = useState('');
-    const [dropName, setDropName] = useState('');
-    const [generalName, setGeneralName] = useState('');
-    const [monsters, setMonsters] = useState('');
-    const [minWorldRank, setMinWorldRank] = useState(0);
-    const [dropRate, setDropRate] = useState(0);
-    const [rarity, setRarity] = useState('');
+    // routing props
+    const route = useRoute();
+    const params = route.params as IItem;
 
+    // hooks for text inputs
+    const [photo, setPhoto] = useState(params.photo);
+    const [dropName, setDropName] = useState(params.dropName);
+    const [generalName, setGeneralName] = useState(params.generalName);
+    const [monsters, setMonsters] = useState(params.monster.toString());
+    const [minWorldRank, setMinWorldRank] = useState(params.minWorldRank);
+    const [dropRate, setDropRate] = useState(params.dropRate);
+    const [rarity, setRarity] = useState(params.rarity);
+
+    // Navigation
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
     const dispatch = useDispatch();
 
-    const submit = () => {
+    const update = () => {
         const item: IItem = {
             dropName: dropName,
             photo: photo,
             generalName: generalName,
-            monster: monsters.split(' '),
+            monster: monsters.split(','),
             minWorldRank: minWorldRank,
             dropRate: dropRate,
             rarity: rarity,
@@ -45,28 +50,30 @@ const EditDrop: React.FC = () => {
             <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
             <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
             {/* Will need to work on this */}
-            <TextInput style = {styles.input} 
-            onChangeText={setMonsters} 
-            placeholder="Monsters" 
-            />
+            <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
             
             <TextInput 
-            style = {styles.input} 
-            onChangeText={(value) => setMinWorldRank(Number(value))} 
-            placeholder="Minimum World Rank" 
-            keyboardType='numeric'
-            />
+                style = {styles.input} 
+                onChangeText={(value) => setMinWorldRank(Number(value))} 
+                placeholder="Minimum World Rank" 
+                keyboardType='numeric'
+            >
+                {minWorldRank}
+            </TextInput>
+
             <TextInput 
-            style = {styles.input} 
-            onChangeText={(value) => setDropRate(Number(value))} 
-            placeholder="Drop Rate (%)" 
-            keyboardType='numeric'
-            />
-            
+                style = {styles.input} 
+                onChangeText={(value) => setDropRate(Number(value))} 
+                placeholder="Drop Rate (%)" 
+                keyboardType='numeric'
+            >
+                {dropRate}
+            </TextInput>
+
             <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
             {/* Submit Button */}
-            <TouchableOpacity style = {styles.button} onPress = {submit}>
-                <Text style = {styles.buttonText}>Submit</Text>
+            <TouchableOpacity style = {styles.button} onPress = {update}>
+                <Text style = {styles.buttonText}>Update</Text>
             </TouchableOpacity>
         </View>
     )
