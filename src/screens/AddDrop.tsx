@@ -3,7 +3,7 @@ import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-nativ
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
-import { addDrop } from "../redux/actions/genshin-actions";
+import { addDrop, add } from "../redux/actions/genshin-actions";
 import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
 
@@ -26,7 +26,7 @@ const AddDrop: React.FC = () => {
             dropName: dropName,
             photo: photo,
             generalName: generalName,
-            monster: ['please'],
+            monster: monsters.split(' '),
             minWorldRank: minWorldRank,
             dropRate: dropRate,
             rarity: rarity,

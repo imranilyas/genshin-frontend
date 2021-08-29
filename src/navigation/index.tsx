@@ -13,11 +13,9 @@ const Stack = createStackNavigator<RootStackParamList>();
 const RootStack = () => {
     // Load in Item Drops to Redux Store
     const dispatch = useDispatch();
-    /*
     React.useEffect(() => {
         dispatch(GetAllDrops());
     }, [dispatch]);
-    */
     return(
         <Stack.Navigator
             initialRouteName='AllDrops'

@@ -8,4 +8,8 @@ interface IItem {
     rarity: string, //may need to update this on backend/db
 }
 
+export interface IDrop {
+    item: IItem,
+}
+
 export default IItem;
