@@ -3,7 +3,7 @@ import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-nativ
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
-import { addDrop, add } from "../redux/actions/genshin-actions";
+import { addDrop } from "../redux/actions/genshin-actions";
 import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
 
@@ -34,7 +34,7 @@ const AddDrop: React.FC = () => {
         if(dropName && photo) {
             console.log(item);
             dispatch(addDrop(item)); 
-            //navigation.goBack();
+            navigation.goBack();
         }
     }
 

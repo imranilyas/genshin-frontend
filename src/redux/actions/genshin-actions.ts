@@ -32,7 +32,7 @@ export const GetDropByName = (item: IItem) => async (dispatch: Dispatch) => {
 export const addDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
         // axios request
-        await axios.post('/', { ...item });
+        await axios.post('/', {item});
         const res = await axios.get('/all');
         dispatch({
             type: AppActions.UPDATE_ITEM,
@@ -42,28 +42,10 @@ export const addDrop = (item: IItem) => async (dispatch: Dispatch) => {
         console.log('Error with Adding an Item Drop: ' + error);
     }
 }
-//! Need to remove later
-export const add = (item: IItem) => async (dispatch: Dispatch) => {
-    try {
-        // axios request
-        await axios.post('/', { ...item });
-        const res = await axios.get('/all');
-        dispatch({
-            type: AppActions.UPDATE_ITEM,
-            payload: {drops: {
-                item: res.data
-            }
-            },
-        });
-    } catch (error) {
-        console.log('Error with Adding an Item Drop: ' + error);
-    }
-}
-
 
 export const updateDrop = (item: IItem) => async (dispatch: Dispatch) => {
     try {
-        await axios.put('/', {...item});
+        await axios.put('/', {item});
         const res = await axios.get('/all');
         dispatch({
             type: AppActions.UPDATE_ITEM,

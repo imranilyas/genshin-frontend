@@ -39,7 +39,7 @@ const EditDrop: React.FC = () => {
         if(dropName && photo) {
             console.log(item);
             dispatch(updateDrop(item)); 
-            //navigation.goBack();
+            navigation.goBack();
         }
     }
 
