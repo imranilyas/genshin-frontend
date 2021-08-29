@@ -1,19 +1,43 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, {useState} from "react";
 import { View, FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
+import EachDrop from "../components/AllDrops/EachDrop";
+import IItem from "../entities/item";
+import { useSelector, useDispatch } from "react-redux";
+import { IAppState } from "../redux/state";
 
 const AllDrops: React.FC = () => {
+    const items: IItem[] = useSelector(
+        (state: IAppState) => state.items
+    );
+
+    const renderItem = ({item}: {item: IItem}) => {
+        return <EachDrop item = {item}/>
+    }
+
+    const [fetching, setFetching] = useState(false);
+
+    // Navigation
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
+    const dispatch = useDispatch();
 
     return (
         <View style = {styles.container}>
             <Text>All Drops Screen</Text>
+
+            {/* Add Drop Button */}
             <TouchableOpacity style = {styles.buttons} onPress={() => navigation.navigate('AddDrop')}>
                 <Text>Add Item Drop</Text>
             </TouchableOpacity>
+
+            {/* Flatlist for All Drops */}
+            <FlatList
+                renderItem = {renderItem}
+                keyExtractor = {(item) => item.dropName}
+            />
         </View>
     )
 }

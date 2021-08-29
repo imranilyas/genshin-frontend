@@ -16,7 +16,7 @@ const EachDrop: React.FC<IProps> = (props: IProps) => {
 
     return (
         <View style = {styles.container}>
-            <TouchableOpacity style = {styles.drop} onPress = {() => navigation.navigate('ViewDrop')}>
+            <TouchableOpacity style = {styles.drop} onPress = {() => navigation.navigate('ViewDrop', props.item)}>
                 <Image 
                     style = {styles.img}
                     source = {{
@@ -47,5 +47,8 @@ const styles = StyleSheet.create({
     drop: {
         padding: '4%',
         flexDirection: 'row',
+        backgroundColor: 'grey',
     }
 })
+
+export default EachDrop;
