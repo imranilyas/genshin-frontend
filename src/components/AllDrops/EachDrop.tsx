@@ -35,13 +35,15 @@ const styles = StyleSheet.create({
     },
 
     img: {
-        height: 150,
-        width: 125,
+        height: 50,
+        width: 50,
     },
 
     info: {
         fontSize: 20,
         fontStyle: 'italic',
+        marginTop: '3.5%',
+        marginLeft: '5%',
     },
 
     drop: {

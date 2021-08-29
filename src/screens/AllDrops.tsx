@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { View, FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
@@ -7,6 +7,7 @@ import EachDrop from "../components/AllDrops/EachDrop";
 import IItem from "../entities/item";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../redux/state";
+import { GetAllDrops } from "../redux/actions/genshin-actions";
 
 const AllDrops: React.FC = () => {
     const items: IItem[] = useSelector(
@@ -18,11 +19,27 @@ const AllDrops: React.FC = () => {
     }
 
     const [fetching, setFetching] = useState(false);
+    const [drops, setDrops] = useState<IItem[]>(items);
 
     // Navigation
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
     const dispatch = useDispatch();
+
+    // fetch data for refresh
+    const fetch = () => {
+        dispatch(GetAllDrops());
+        setFetching(false);
+    };
+
+    const refresh = () => {
+        setFetching(true);
+        fetch();
+    };
+
+    useEffect(() => {
+        setDrops(items);
+    }, [items])
 
     return (
         <View style = {styles.container}>
@@ -35,6 +52,9 @@ const AllDrops: React.FC = () => {
 
             {/* Flatlist for All Drops */}
             <FlatList
+                onRefresh = {refresh}
+                refreshing = {fetching}
+                data = {drops}
                 renderItem = {renderItem}
                 keyExtractor = {(item) => item.dropName}
             />
