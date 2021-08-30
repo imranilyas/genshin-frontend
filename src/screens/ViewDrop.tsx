@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert, Image } from "react-native";
 import IItem from "../entities/item";
 import { useDispatch } from 'react-redux';
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -60,6 +60,21 @@ const ViewDrop: React.FC = () => {
             >
                 <Text>View Specific Drop Screen</Text>
                 
+                {/* Passed-in Item Information */}
+                <Image
+                    style = {styles.dropPhoto}
+                    source = {{
+                        uri: params.photo,
+                    }} 
+                />
+                <Text>{params.dropName}</Text>
+                <Text>{params.rarity}</Text>
+                <Text>Item Set: {params.generalName}</Text>
+                <Text>{params.dropRate}</Text>
+                <Text>{params.minWorldRank}</Text>
+                <Text>Dropped By: {params.monster.toString()}</Text>
+
+                
                 {/* Edit Button */}
                 <TouchableOpacity style = {styles.blueBtn} onPress = {() => navigation.navigate('EditDrop', params)}>
                     <Text style = {styles.blueBtnText}>Edit Drop</Text>    
@@ -83,7 +98,16 @@ const styles = StyleSheet.create({
 
     background: {
         flex: 1,
-        justifyContent: 'center',
+        //justifyContent: 'center',
+    },
+
+    dropPhoto: {
+        height: 220,
+        width: 220,
+        alignSelf: 'center',
+        //backgroundColor: 'white',
+        borderRadius: 1000/2,
+        //opacity: 0.8,
     },
 
     redBtn: {

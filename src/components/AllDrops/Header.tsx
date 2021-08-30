@@ -1,6 +1,5 @@
 import React from "react";
 import {Image, TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../navigation/stackTypes";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -9,7 +8,6 @@ const Header: React.FC = () => {
     // Navigation
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
-    const dispatch = useDispatch();
 
     return(
         <View>
