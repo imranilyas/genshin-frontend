@@ -6,6 +6,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { deleteDrop } from "../redux/actions/genshin-actions";
+import Toast from "react-native-toast-message";
 
 const image = {uri: "https://pbs.twimg.com/media/Et9411BXEAUq8P5.jpg"};
 
@@ -21,7 +22,12 @@ const ViewDrop: React.FC = () => {
 
     //Delete handler
     const deleteItem = () => {
-        console.log(params.dropName);
+        Toast.show({
+            type: 'success',
+            position: 'top',
+            text1: 'Success!',
+            text2: `${params.dropName} has been deleted.`
+        })
         dispatch(deleteDrop(params));
         navigation.goBack();
     }

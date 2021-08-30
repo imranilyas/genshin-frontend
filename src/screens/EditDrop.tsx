@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import IItem from "../entities/item";
 import { updateDrop } from "../redux/actions/genshin-actions";
+import Toast from "react-native-toast-message";
 
 const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
 
@@ -38,10 +39,23 @@ const EditDrop: React.FC = () => {
             dropRate: dropRate,
             rarity: rarity,
         };
-        if(dropName && photo) {
-            console.log(item);
+        if(dropName && photo && generalName && monsters && minWorldRank && dropRate && rarity) {
+            Toast.show({
+                type: 'success',
+                position: 'top',
+                text1: 'Success!',
+                text2: `${dropName} has been updated.`
+            })
             dispatch(updateDrop(item)); 
             navigation.goBack();
+        }
+        else {
+            Toast.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Update Failed...',
+                text2: `One or more of the input fields are empty.`
+            })
         }
     }
 

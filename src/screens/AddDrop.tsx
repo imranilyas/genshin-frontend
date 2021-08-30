@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { addDrop } from "../redux/actions/genshin-actions";
 import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
+import Toast from "react-native-toast-message";
 
 const image = {uri: "https://preview.redd.it/sok7elhncww61.jpg?width=1902&format=pjpg&auto=webp&s=c52a0105b388e68419f9e248a18faa719b2c2159"};
 
@@ -33,10 +34,23 @@ const AddDrop: React.FC = () => {
             dropRate: dropRate,
             rarity: rarity,
         };
-        if(dropName && photo) {
-            console.log(item);
-            dispatch(addDrop(item)); 
+        if(dropName && photo && generalName && monsters && minWorldRank && dropRate && rarity) {
+            Toast.show({
+                type: 'success',
+                position: 'top',
+                text1: 'Success!',
+                text2: `${dropName} added to the list.`
+            })
+            dispatch(addDrop(item));
             navigation.goBack();
+        }
+        else{
+            Toast.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Addition Failed...',
+                text2: `One or more of the input fields are empty.`
+            })
         }
     }
 

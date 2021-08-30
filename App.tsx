@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { NavigationContainer } from '@react-navigation/native';
 import RootStack from './src/navigation';
+import Toast from 'react-native-toast-message';
 
 export type RootStore = ReturnType<typeof Reducer>
 
@@ -21,12 +22,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar style="auto" />
         <RootStack />
-        {/*         
-        <View style={styles.container}>
-          <Text>Open up App.tsx to start working on your app!</Text>
-          <StatusBar style="auto" />
-        </View> 
-        */}
+        <Toast ref={(ref) => Toast.setRef(ref)} />
       </NavigationContainer>
     </Provider>
   );
