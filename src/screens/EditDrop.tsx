@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import IItem from "../entities/item";
 import { updateDrop } from "../redux/actions/genshin-actions";
 import Toast from "react-native-toast-message";
+import { Picker } from "@react-native-picker/picker";
 
 const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
 
@@ -77,25 +78,40 @@ const EditDrop: React.FC = () => {
                 {/* Will need to work on this */}
                 <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
                 
-                <TextInput 
-                    style = {styles.input} 
-                    onChangeText={(value) => setMinWorldRank(Number(value))} 
-                    placeholder="Minimum World Rank" 
-                    keyboardType='numeric'
-                >
-                    {minWorldRank}
-                </TextInput>
 
-                <TextInput 
-                    style = {styles.input} 
-                    onChangeText={(value) => setDropRate(Number(value))} 
-                    placeholder="Drop Rate (%)" 
-                    keyboardType='numeric'
-                >
-                    {dropRate}
-                </TextInput>
+                <View style = {styles.rateRank}>
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setMinWorldRank(Number(value))} 
+                            placeholder="Min. World Rank" 
+                            keyboardType='decimal-pad'
+                        >
+                            {minWorldRank}
+                        </TextInput>
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setDropRate(Number(value))} 
+                            placeholder="Drop Rate" 
+                            keyboardType='decimal-pad'
+                        >
+                            {dropRate}
+                        </TextInput>
+                </View>
+                    {/* Picker */}
+                    <Picker
+                        style = {styles.picker}
+                        selectedValue={rarity}
+                        mode = 'dropdown'
+                        onValueChange={(itemValue, itemIndex) =>
+                            setRarity(itemValue)
+                        }>
+                        <Picker.Item label="Rarity..." value="grey" enabled = {false}/>
+                        <Picker.Item label="Grey" value="grey" />
+                        <Picker.Item label="Green" value="green" />
+                        <Picker.Item label="Blue" value="blue" />
+                        <Picker.Item label="Purple" value="purple" />
+                    </Picker>
 
-                <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
                 {/* Submit Button */}
                 <TouchableOpacity style = {styles.buttons} onPress = {update}>
                     <Text style = {styles.btnText}>Update</Text>
@@ -125,6 +141,26 @@ const styles = StyleSheet.create({
         padding: '2%',
         margin: '2%',
         borderRadius: 1000/2,
+    },
+
+    rateRank: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+    },
+
+    rateRankInput: {
+        fontSize: 20,
+        backgroundColor: '#DDFFFD',
+        opacity: 0.9,
+        padding: '2%',
+        margin: '2%',
+        borderRadius: 1000/2,
+        width: '25%',
+        textAlign: 'center',
+    },
+
+    picker: {
+        marginTop: '-5%',
     },
 
     buttons: {

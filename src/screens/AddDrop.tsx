@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import { TextInput, Text, 
     TouchableOpacity, StyleSheet, View, ImageBackground, 
     KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard
@@ -22,10 +22,9 @@ const AddDrop: React.FC = () => {
     const [monsters, setMonsters] = useState('');
     const [minWorldRank, setMinWorldRank] = useState(0);
     const [dropRate, setDropRate] = useState(0);
-    const [rarity, setRarity] = useState('');
 
     // picker
-    const [selectedLanguage, setSelectedLanguage] = useState();
+    const [rarity, setRarity] = useState('Grey');
 
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
@@ -81,21 +80,35 @@ const AddDrop: React.FC = () => {
                         onChangeText={setMonsters} 
                         placeholder="Monsters" 
                     />
-                    
-                    <TextInput 
-                        style = {styles.input} 
-                        onChangeText={(value) => setMinWorldRank(Number(value))} 
-                        placeholder="Minimum World Rank" 
-                        keyboardType='decimal-pad'
-                    />
-                    <TextInput 
-                        style = {styles.input} 
-                        onChangeText={(value) => setDropRate(Number(value))} 
-                        placeholder="Drop Rate" 
-                        keyboardType='decimal-pad'
-                    />
-                    
-                    <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
+                    <View style = {styles.rateRank}>
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setMinWorldRank(Number(value))} 
+                            placeholder="Min. World Rank" 
+                            keyboardType='decimal-pad'
+                        />
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setDropRate(Number(value))} 
+                            placeholder="Drop Rate" 
+                            keyboardType='decimal-pad'
+                        />
+                    </View>
+                    {/* Picker */}
+                    <Picker
+                        style = {styles.picker}
+                        selectedValue={rarity}
+                        mode = 'dropdown'
+                        onValueChange={(itemValue, itemIndex) =>
+                            setRarity(itemValue)
+                        }>
+                        <Picker.Item label="Rarity..." value="grey" enabled = {false}/>
+                        <Picker.Item label="Grey" value="grey" />
+                        <Picker.Item label="Green" value="green" />
+                        <Picker.Item label="Blue" value="blue" />
+                        <Picker.Item label="Purple" value="purple" />
+                    </Picker>
+
                     {/* Submit Button */}
                     <TouchableOpacity style = {styles.buttons} onPress = {submit}>
                         <Text style = {styles.btnText}>Submit</Text>
@@ -125,6 +138,26 @@ const styles = StyleSheet.create({
         padding: '2%',
         margin: '2%',
         borderRadius: 1000/2,
+    },
+
+    rateRank: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+    },
+
+    rateRankInput: {
+        fontSize: 20,
+        backgroundColor: '#DDFFFD',
+        opacity: 0.9,
+        padding: '2%',
+        margin: '2%',
+        borderRadius: 1000/2,
+        width: '40%',
+        textAlign: 'center',
+    },
+
+    picker: {
+        marginTop: '-5%',
     },
 
     buttons: {

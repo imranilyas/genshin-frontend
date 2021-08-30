@@ -31,7 +31,7 @@ const RootStack = () => {
                 component={AllDrops}
                 options={{
                     headerShown: false,
-                    title: 'All Item Drops',
+                    title: 'All Items',
                     headerTitleStyle: {
                         color: 'black', 
                     },
@@ -55,7 +55,7 @@ const RootStack = () => {
                 component={ViewDrop}
                 options={{
                     headerShown: true,
-                    title: 'View Item Drop',
+                    title: 'View Item',
                     headerTitleStyle: {
                         color: 'black',
                     },
@@ -67,7 +67,7 @@ const RootStack = () => {
                 component={EditDrop}
                 options={{
                     headerShown: true,
-                    title: 'Edit Item Drop',
+                    title: 'Edit Item',
                     headerTitleStyle: {
                         color: 'black',
                     },

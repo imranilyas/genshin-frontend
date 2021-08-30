@@ -51,7 +51,6 @@ const ViewDrop: React.FC = () => {
         dispatch(deleteDrop(params));
         navigation.goBack();
     }; 
-    const rate = params.rarity;
 
     return (
         <View style = {styles.container}>
