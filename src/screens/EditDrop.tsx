@@ -72,6 +72,22 @@ const EditDrop: React.FC = () => {
                 source = {image}
                 resizeMode = "cover"
             >
+                 {/* Picker */}
+                 <Picker
+                        style = {styles.picker}
+                        itemStyle = {styles.pickerItems}
+                        selectedValue={rarity}
+                        mode = 'dropdown'
+                        onValueChange={(itemValue, itemIndex) =>
+                            setRarity(itemValue)
+                        }>
+                        <Picker.Item label="Rarity..." value="grey" enabled = {false}/>
+                        <Picker.Item label="Grey" value="grey" />
+                        <Picker.Item label="Green" value="green" />
+                        <Picker.Item label="Blue" value="blue" />
+                        <Picker.Item label="Purple" value="purple" />
+                    </Picker>
+
                 <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
                 <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
                 <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
@@ -97,21 +113,7 @@ const EditDrop: React.FC = () => {
                             {dropRate}
                         </TextInput>
                 </View>
-                    {/* Picker */}
-                    <Picker
-                        style = {styles.picker}
-                        selectedValue={rarity}
-                        mode = 'dropdown'
-                        onValueChange={(itemValue, itemIndex) =>
-                            setRarity(itemValue)
-                        }>
-                        <Picker.Item label="Rarity..." value="grey" enabled = {false}/>
-                        <Picker.Item label="Grey" value="grey" />
-                        <Picker.Item label="Green" value="green" />
-                        <Picker.Item label="Blue" value="blue" />
-                        <Picker.Item label="Purple" value="purple" />
-                    </Picker>
-
+                   
                 {/* Submit Button */}
                 <TouchableOpacity style = {styles.buttons} onPress = {update}>
                     <Text style = {styles.btnText}>Update</Text>
@@ -160,7 +162,21 @@ const styles = StyleSheet.create({
     },
 
     picker: {
-        marginTop: '-5%',
+        //marginTop: '-5%',
+        //alignSelf: 'center',
+        color: 'black',
+        margin: '2%',
+        backgroundColor: '#DDFFFD',
+        borderRadius: 1000/2,
+    },
+
+    pickerItems: {
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        borderRadius: 1000/2,
+
     },
 
     buttons: {

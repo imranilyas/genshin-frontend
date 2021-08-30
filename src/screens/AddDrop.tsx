@@ -97,6 +97,7 @@ const AddDrop: React.FC = () => {
                     {/* Picker */}
                     <Picker
                         style = {styles.picker}
+                        itemStyle = {styles.pickerItems}
                         selectedValue={rarity}
                         mode = 'dropdown'
                         onValueChange={(itemValue, itemIndex) =>
@@ -152,14 +153,26 @@ const styles = StyleSheet.create({
         padding: '2%',
         margin: '2%',
         borderRadius: 1000/2,
-        width: '40%',
+        width: '42%',
         textAlign: 'center',
     },
 
     picker: {
-        marginTop: '-5%',
+        //marginTop: '-5%',
+        color: 'black',
+        margin: '2%',
+        backgroundColor: '#DDFFFD',
+        borderRadius: 1000/2,
     },
-
+    
+    pickerItems: {
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        fontSize: 20,
+        borderRadius: 1000/2,
+    },
+    
     buttons: {
         backgroundColor: '#01CDD9',
         borderRadius: 1000/2,
