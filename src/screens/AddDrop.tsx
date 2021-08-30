@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { TextInput, Text, TouchableOpacity, StyleSheet, View, ImageBackground } from "react-native";
+import { TextInput, Text, TouchableOpacity, StyleSheet, View, ImageBackground, useWindowDimensions } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
@@ -62,33 +62,33 @@ const AddDrop: React.FC = () => {
                 resizeMode = "cover"
             >
                 <Text>Add Drop Screen</Text>
-                <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
-                <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
-                <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
-                {/* Will need to work on this */}
-                <TextInput style = {styles.input} 
-                onChangeText={setMonsters} 
-                placeholder="Monsters" 
-                />
-                
-                <TextInput 
-                style = {styles.input} 
-                onChangeText={(value) => setMinWorldRank(Number(value))} 
-                placeholder="Minimum World Rank" 
-                keyboardType='decimal-pad'
-                />
-                <TextInput 
-                style = {styles.input} 
-                onChangeText={(value) => setDropRate(Number(value))} 
-                placeholder="Drop Rate" 
-                keyboardType='decimal-pad'
-                />
-                
-                <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
-                {/* Submit Button */}
-                <TouchableOpacity style = {styles.button} onPress = {submit}>
-                    <Text style = {styles.buttonText}>Submit</Text>
-                </TouchableOpacity>
+                    <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
+                    <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
+                    <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
+                    {/* Will need to work on this */}
+                    <TextInput style = {styles.input} 
+                        onChangeText={setMonsters} 
+                        placeholder="Monsters" 
+                    />
+                    
+                    <TextInput 
+                        style = {styles.input} 
+                        onChangeText={(value) => setMinWorldRank(Number(value))} 
+                        placeholder="Minimum World Rank" 
+                        keyboardType='decimal-pad'
+                    />
+                    <TextInput 
+                        style = {styles.input} 
+                        onChangeText={(value) => setDropRate(Number(value))} 
+                        placeholder="Drop Rate" 
+                        keyboardType='decimal-pad'
+                    />
+                    
+                    <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
+                    {/* Submit Button */}
+                    <TouchableOpacity style = {styles.buttons} onPress = {submit}>
+                        <Text style = {styles.btnText}>Submit</Text>
+                    </TouchableOpacity>
             </ImageBackground>
         </View>
     )
@@ -107,18 +107,27 @@ const styles = StyleSheet.create({
 
     input: {
         fontSize: 20,
-        backgroundColor: 'green',
+        backgroundColor: '#DDFFFD',
+        opacity: 0.9,
         padding: '2%',
         margin: '2%',
+        borderRadius: 1000/2,
     },
 
-    button: {
-        backgroundColor: 'grey',
+    buttons: {
+        backgroundColor: '#01CDD9',
+        borderRadius: 1000/2,
+        alignSelf: 'center',
+        padding: '3%',
+        marginVertical: '2%',
+        marginBottom: '3%',
     },
 
-    buttonText: {
+    btnText: {
         textAlign: 'center',
-    },
+        fontSize: 22,
+        color: 'white',
+    }
 })
 
 export default AddDrop;
