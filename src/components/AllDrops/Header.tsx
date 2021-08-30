@@ -18,7 +18,7 @@ const Header: React.FC = () => {
                 source = {require('../../../assets/images/logo.png')}
             />
             <TouchableOpacity style = {styles.buttons} onPress={() => navigation.navigate('AddDrop')}>
-                        <Text>Add Item Drop</Text>
+                <Text style = {styles.btnText}>Add Item Drop</Text>
             </TouchableOpacity>
         </View>
     )
@@ -29,9 +29,19 @@ const styles = StyleSheet.create({
         width: 200,
         alignSelf: 'center',
     },
-    
+
     buttons: {
-        backgroundColor: 'grey',
+        backgroundColor: '#01CDD9',
+        borderRadius: 1000/2,
+        alignSelf: 'center',
+        padding: '3%',
+        marginBottom: '5%',
     },
+
+    btnText: {
+        textAlign: 'center',
+        fontSize: 22,
+        color: 'white',
+    }
 })
 export default Header;

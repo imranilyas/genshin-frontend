@@ -47,9 +47,11 @@ const styles = StyleSheet.create({
     },
 
     drop: {
-        padding: '4%',
+        padding: '3%',
         flexDirection: 'row',
-        backgroundColor: 'grey',
+        backgroundColor: '#A3FFFA',
+        borderRadius: 20/2,
+        opacity: 0.8,
     }
 })
 
