@@ -1,8 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
 import React, {useState, useEffect} from "react";
-import { View, FlatList, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../navigation/stackTypes";
+import { View, FlatList, StyleSheet, ImageBackground } from "react-native";
 import EachDrop from "../components/AllDrops/EachDrop";
 import IItem from "../entities/item";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,9 +21,7 @@ const AllDrops: React.FC = () => {
     const [fetching, setFetching] = useState(false);
     const [drops, setDrops] = useState<IItem[]>(items);
 
-    // Navigation
-    type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
-    const navigation = useNavigation<main>();
+    // Actions
     const dispatch = useDispatch();
 
     // fetch data for refresh
@@ -73,10 +68,6 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         justifyContent: 'center',
-    },
-    
-    buttons: {
-        backgroundColor: 'grey',
     },
 })
 

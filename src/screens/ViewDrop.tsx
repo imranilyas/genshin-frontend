@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import IItem from "../entities/item";
 import { useDispatch } from 'react-redux';
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -19,6 +19,25 @@ const ViewDrop: React.FC = () => {
     // Route params
     const route = useRoute();
     const params = route.params as IItem;
+
+    const alerting = () => {
+        Alert.alert(
+            "Deleting an Item",
+            "Are you sure you want to delete this item?",
+            [
+                {
+                    text: "No",
+                    style: 'cancel',
+                },
+
+                {
+                    text: "Yes",
+                    onPress: () => deleteItem(),
+                    style: "destructive",
+                }
+            ]
+        )
+    }
 
     //Delete handler
     const deleteItem = () => {
@@ -47,7 +66,7 @@ const ViewDrop: React.FC = () => {
                 </TouchableOpacity>
 
                 {/* Delete Button */}
-                <TouchableOpacity style = {styles.redBtn} onPress = {deleteItem}>
+                <TouchableOpacity style = {styles.redBtn} onPress = {alerting}>
                     <Text style = {styles.redBtnText}>Delete Drop</Text>    
                 </TouchableOpacity>
 
