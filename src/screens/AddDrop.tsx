@@ -75,13 +75,13 @@ const AddDrop: React.FC = () => {
                 style = {styles.input} 
                 onChangeText={(value) => setMinWorldRank(Number(value))} 
                 placeholder="Minimum World Rank" 
-                keyboardType='numeric'
+                keyboardType='decimal-pad'
                 />
                 <TextInput 
                 style = {styles.input} 
                 onChangeText={(value) => setDropRate(Number(value))} 
-                placeholder="Drop Rate (%)" 
-                keyboardType='numeric'
+                placeholder="Drop Rate" 
+                keyboardType='decimal-pad'
                 />
                 
                 <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
