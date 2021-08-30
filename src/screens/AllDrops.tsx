@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, {useState, useEffect} from "react";
-import { View, FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, FlatList, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import EachDrop from "../components/AllDrops/EachDrop";
@@ -8,6 +8,9 @@ import IItem from "../entities/item";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../redux/state";
 import { GetAllDrops } from "../redux/actions/genshin-actions";
+import Header from "../components/AllDrops/Header";
+
+const image = {uri: "https://i2.wp.com/www.alittlebithuman.com/wp-content/uploads/2021/06/genshin-impact-open-world-screenshot.jpg?resize=1170%2C700&ssl=1"}
 
 const AllDrops: React.FC = () => {
     const items: IItem[] = useSelector(
@@ -43,21 +46,21 @@ const AllDrops: React.FC = () => {
 
     return (
         <View style = {styles.container}>
-            <Text>All Drops Screen</Text>
-
-            {/* Add Drop Button */}
-            <TouchableOpacity style = {styles.buttons} onPress={() => navigation.navigate('AddDrop')}>
-                <Text>Add Item Drop</Text>
-            </TouchableOpacity>
-
-            {/* Flatlist for All Drops */}
-            <FlatList
-                onRefresh = {refresh}
-                refreshing = {fetching}
-                data = {drops}
-                renderItem = {renderItem}
-                keyExtractor = {(item) => item.dropName}
-            />
+            <ImageBackground
+                style = {styles.background}
+                source = {image}
+                resizeMode = "cover"
+            >
+                {/* Flatlist for All Drops */}
+                <FlatList
+                    onRefresh = {refresh}
+                    refreshing = {fetching}
+                    data = {drops}
+                    renderItem = {renderItem}
+                    keyExtractor = {(item) => item.dropName}
+                    ListHeaderComponent = {Header}
+                />
+            </ImageBackground>
         </View>
     )
 }
@@ -67,7 +70,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    list: {},
+    background: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    
     buttons: {
         backgroundColor: 'grey',
     },

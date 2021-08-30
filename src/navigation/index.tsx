@@ -30,7 +30,7 @@ const RootStack = () => {
                 name='AllDrops'
                 component={AllDrops}
                 options={{
-                    headerShown: true,
+                    headerShown: false,
                     title: 'All Item Drops',
                     headerTitleStyle: {
                         color: 'black', 
