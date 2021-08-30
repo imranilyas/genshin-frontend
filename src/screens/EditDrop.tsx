@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {TextInput, Text, View, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
+import {TextInput, Text, View, StyleSheet, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback} from 'react-native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,13 +60,17 @@ const EditDrop: React.FC = () => {
     }
 
     return(
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {styles.container}>
             <ImageBackground
                 style = {styles.background}
                 source = {image}
                 resizeMode = "cover"
             >
-                <Text>Edit Drop Screen</Text>
                 <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
                 <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
                 <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
@@ -98,6 +102,8 @@ const EditDrop: React.FC = () => {
                 </TouchableOpacity>
             </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
 

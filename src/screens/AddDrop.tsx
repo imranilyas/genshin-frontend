@@ -1,5 +1,8 @@
 import React, {useState} from "react";
-import { TextInput, Text, TouchableOpacity, StyleSheet, View, ImageBackground, useWindowDimensions } from "react-native";
+import { TextInput, Text, 
+    TouchableOpacity, StyleSheet, View, ImageBackground, 
+    KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard
+} from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
@@ -59,13 +62,17 @@ const AddDrop: React.FC = () => {
     }
 
     return(
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {styles.container}>
             <ImageBackground
                 style = {styles.background}
                 source = {image}
                 resizeMode = "cover"
             >
-                <Text>Add Drop Screen</Text>
                     <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
                     <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
                     <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
@@ -95,6 +102,8 @@ const AddDrop: React.FC = () => {
                     </TouchableOpacity>
             </ImageBackground>
         </View>
+        </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
 
