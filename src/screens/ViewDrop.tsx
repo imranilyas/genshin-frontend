@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import IItem from "../entities/item";
 import { useDispatch } from 'react-redux';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { deleteDrop } from "../redux/actions/genshin-actions";
+
+const image = {uri: "https://pbs.twimg.com/media/Et9411BXEAUq8P5.jpg"};
 
 const ViewDrop: React.FC = () => {
     // Navigation
@@ -25,24 +27,36 @@ const ViewDrop: React.FC = () => {
     }
 
     return (
-        <View>
-            <Text>View Specific Drop Screen</Text>
-            
-            {/* Edit Button */}
-            <TouchableOpacity style = {styles.blueBtn} onPress = {() => navigation.navigate('EditDrop', params)}>
-                <Text style = {styles.blueBtnText}>Edit Drop</Text>    
-            </TouchableOpacity>
+        <View style = {styles.container}>
+            <ImageBackground
+                style = {styles.background}
+                source = {image}
+                resizeMode = "cover"
+            >
+                <Text>View Specific Drop Screen</Text>
+                
+                {/* Edit Button */}
+                <TouchableOpacity style = {styles.blueBtn} onPress = {() => navigation.navigate('EditDrop', params)}>
+                    <Text style = {styles.blueBtnText}>Edit Drop</Text>    
+                </TouchableOpacity>
 
-            {/* Delete Button */}
-            <TouchableOpacity style = {styles.redBtn} onPress = {deleteItem}>
-                <Text style = {styles.redBtnText}>Delete Drop</Text>    
-            </TouchableOpacity>
+                {/* Delete Button */}
+                <TouchableOpacity style = {styles.redBtn} onPress = {deleteItem}>
+                    <Text style = {styles.redBtnText}>Delete Drop</Text>    
+                </TouchableOpacity>
+
+            </ImageBackground>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+
+    background: {
         flex: 1,
         justifyContent: 'center',
     },

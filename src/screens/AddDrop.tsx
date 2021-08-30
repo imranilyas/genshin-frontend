@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import { TextInput, Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { TextInput, Text, TouchableOpacity, StyleSheet, View, ImageBackground } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation } from "@react-navigation/native";
 import { addDrop } from "../redux/actions/genshin-actions";
 import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
+
+const image = {uri: "https://preview.redd.it/sok7elhncww61.jpg?width=1902&format=pjpg&auto=webp&s=c52a0105b388e68419f9e248a18faa719b2c2159"};
 
 const AddDrop: React.FC = () => {
     // hooks for text inputs
@@ -40,40 +42,51 @@ const AddDrop: React.FC = () => {
 
     return(
         <View style = {styles.container}>
-            <Text>Add Drop Screen</Text>
-            <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
-            <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
-            <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
-            {/* Will need to work on this */}
-            <TextInput style = {styles.input} 
-            onChangeText={setMonsters} 
-            placeholder="Monsters" 
-            />
-            
-            <TextInput 
-            style = {styles.input} 
-            onChangeText={(value) => setMinWorldRank(Number(value))} 
-            placeholder="Minimum World Rank" 
-            keyboardType='numeric'
-            />
-            <TextInput 
-            style = {styles.input} 
-            onChangeText={(value) => setDropRate(Number(value))} 
-            placeholder="Drop Rate (%)" 
-            keyboardType='numeric'
-            />
-            
-            <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
-            {/* Submit Button */}
-            <TouchableOpacity style = {styles.button} onPress = {submit}>
-                <Text style = {styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
+            <ImageBackground
+                style = {styles.background}
+                source = {image}
+                resizeMode = "cover"
+            >
+                <Text>Add Drop Screen</Text>
+                <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
+                <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
+                <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
+                {/* Will need to work on this */}
+                <TextInput style = {styles.input} 
+                onChangeText={setMonsters} 
+                placeholder="Monsters" 
+                />
+                
+                <TextInput 
+                style = {styles.input} 
+                onChangeText={(value) => setMinWorldRank(Number(value))} 
+                placeholder="Minimum World Rank" 
+                keyboardType='numeric'
+                />
+                <TextInput 
+                style = {styles.input} 
+                onChangeText={(value) => setDropRate(Number(value))} 
+                placeholder="Drop Rate (%)" 
+                keyboardType='numeric'
+                />
+                
+                <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
+                {/* Submit Button */}
+                <TouchableOpacity style = {styles.button} onPress = {submit}>
+                    <Text style = {styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+            </ImageBackground>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+
+    background: {
         flex: 1,
         justifyContent: 'center',
     },

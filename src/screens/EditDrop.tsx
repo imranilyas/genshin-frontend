@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import {TextInput, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {TextInput, Text, View, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../navigation/stackTypes";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import IItem from "../entities/item";
 import { updateDrop } from "../redux/actions/genshin-actions";
+
+const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
 
 const EditDrop: React.FC = () => {
     // routing props
@@ -45,42 +47,53 @@ const EditDrop: React.FC = () => {
 
     return(
         <View style = {styles.container}>
-            <Text>Edit Drop Screen</Text>
-            <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
-            <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
-            <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
-            {/* Will need to work on this */}
-            <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
-            
-            <TextInput 
-                style = {styles.input} 
-                onChangeText={(value) => setMinWorldRank(Number(value))} 
-                placeholder="Minimum World Rank" 
-                keyboardType='numeric'
+            <ImageBackground
+                style = {styles.background}
+                source = {image}
+                resizeMode = "cover"
             >
-                {minWorldRank}
-            </TextInput>
+                <Text>Edit Drop Screen</Text>
+                <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
+                <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
+                <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
+                {/* Will need to work on this */}
+                <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
+                
+                <TextInput 
+                    style = {styles.input} 
+                    onChangeText={(value) => setMinWorldRank(Number(value))} 
+                    placeholder="Minimum World Rank" 
+                    keyboardType='numeric'
+                >
+                    {minWorldRank}
+                </TextInput>
 
-            <TextInput 
-                style = {styles.input} 
-                onChangeText={(value) => setDropRate(Number(value))} 
-                placeholder="Drop Rate (%)" 
-                keyboardType='numeric'
-            >
-                {dropRate}
-            </TextInput>
+                <TextInput 
+                    style = {styles.input} 
+                    onChangeText={(value) => setDropRate(Number(value))} 
+                    placeholder="Drop Rate (%)" 
+                    keyboardType='numeric'
+                >
+                    {dropRate}
+                </TextInput>
 
-            <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
-            {/* Submit Button */}
-            <TouchableOpacity style = {styles.button} onPress = {update}>
-                <Text style = {styles.buttonText}>Update</Text>
-            </TouchableOpacity>
+                <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
+                {/* Submit Button */}
+                <TouchableOpacity style = {styles.button} onPress = {update}>
+                    <Text style = {styles.buttonText}>Update</Text>
+                </TouchableOpacity>
+            </ImageBackground>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+
+    background: {
         flex: 1,
         justifyContent: 'center',
     },
