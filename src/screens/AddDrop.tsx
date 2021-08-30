@@ -7,6 +7,7 @@ import { addDrop } from "../redux/actions/genshin-actions";
 import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
 import Toast from "react-native-toast-message";
+import {Picker} from '@react-native-picker/picker';
 
 const image = {uri: "https://preview.redd.it/sok7elhncww61.jpg?width=1902&format=pjpg&auto=webp&s=c52a0105b388e68419f9e248a18faa719b2c2159"};
 
@@ -19,6 +20,9 @@ const AddDrop: React.FC = () => {
     const [minWorldRank, setMinWorldRank] = useState(0);
     const [dropRate, setDropRate] = useState(0);
     const [rarity, setRarity] = useState('');
+
+    // picker
+    const [selectedLanguage, setSelectedLanguage] = useState();
 
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();

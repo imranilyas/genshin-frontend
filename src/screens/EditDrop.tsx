@@ -93,8 +93,8 @@ const EditDrop: React.FC = () => {
 
                 <TextInput style = {styles.input} onChangeText={setRarity} placeholder="Rarity">{rarity}</TextInput>
                 {/* Submit Button */}
-                <TouchableOpacity style = {styles.button} onPress = {update}>
-                    <Text style = {styles.buttonText}>Update</Text>
+                <TouchableOpacity style = {styles.buttons} onPress = {update}>
+                    <Text style = {styles.btnText}>Update</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>
@@ -114,17 +114,26 @@ const styles = StyleSheet.create({
 
     input: {
         fontSize: 20,
-        backgroundColor: 'green',
+        backgroundColor: '#DDFFFD',
+        opacity: 0.9,
         padding: '2%',
         margin: '2%',
+        borderRadius: 1000/2,
     },
 
-    button: {
-        backgroundColor: 'grey',
+    buttons: {
+        backgroundColor: '#01CDD9',
+        borderRadius: 1000/2,
+        alignSelf: 'center',
+        padding: '3%',
+        marginVertical: '2%',
+        marginBottom: '3%',
     },
 
-    buttonText: {
+    btnText: {
         textAlign: 'center',
+        fontSize: 22,
+        color: 'white',
     },
 })
 
