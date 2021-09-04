@@ -7,7 +7,11 @@ import { IAppState } from "../redux/state";
 import { GetAllDrops } from "../redux/actions/genshin-actions";
 import Header from "../components/AllDrops/Header";
 
-const image = {uri: "https://i2.wp.com/www.alittlebithuman.com/wp-content/uploads/2021/06/genshin-impact-open-world-screenshot.jpg?resize=1170%2C700&ssl=1"}
+// Background images
+/** Dark Theme */
+//const image = {uri: "https://www.gameinformer.com/sites/default/files/styles/full/public/2021/07/09/a19505fe/genshin_impact_4.jpg"};
+/** Light Theme */
+const image = {uri: "https://i2.wp.com/www.alittlebithuman.com/wp-content/uploads/2021/06/genshin-impact-open-world-screenshot.jpg?resize=1170%2C700&ssl=1"};
 
 const AllDrops: React.FC = () => {
     const items: IItem[] = useSelector(

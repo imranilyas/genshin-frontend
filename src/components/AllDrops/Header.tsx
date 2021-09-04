@@ -3,6 +3,7 @@ import {Image, TouchableOpacity, View, Text, StyleSheet, TextInput} from 'react-
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../navigation/stackTypes";
 import { StackNavigationProp } from "@react-navigation/stack";
+import DarkMode from "./DarkMode";
 
 const Header: React.FC = () => {
     // Navigation
@@ -15,6 +16,7 @@ const Header: React.FC = () => {
 
     return(
         <View>
+            <DarkMode />
             <Image 
                 style = {styles.logo}
                 source = {require('../../../assets/images/logo.png')}
