@@ -9,7 +9,8 @@ import { deleteDrop } from "../redux/actions/genshin-actions";
 import Toast from "react-native-toast-message";
 import Rating from "../components/Rarity/Rating";
 
-const image = {uri: "https://pbs.twimg.com/media/Et9411BXEAUq8P5.jpg"};
+//const image = {uri: "https://pbs.twimg.com/media/Et9411BXEAUq8P5.jpg"};
+const image = {uri : "https://wallpaperaccess.com/full/5716833.jpg"};
 
 const ViewDrop: React.FC = () => {
     // Navigation

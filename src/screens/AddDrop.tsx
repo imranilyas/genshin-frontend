@@ -11,8 +11,7 @@ import IItem from "../entities/item";
 import { useDispatch } from "react-redux";
 import Toast from "react-native-toast-message";
 import {Picker} from '@react-native-picker/picker';
-
-const image = {uri: "https://preview.redd.it/sok7elhncww61.jpg?width=1902&format=pjpg&auto=webp&s=c52a0105b388e68419f9e248a18faa719b2c2159"};
+import { Dark } from "../styles/style";
 
 const AddDrop: React.FC = () => {
     // hooks for text inputs
@@ -22,6 +21,9 @@ const AddDrop: React.FC = () => {
     const [monsters, setMonsters] = useState('');
     const [minWorldRank, setMinWorldRank] = useState(0);
     const [dropRate, setDropRate] = useState(0);
+
+    // Background Image
+    const image = {uri: Dark.imageAdd};
 
     // picker
     const [rarity, setRarity] = useState('Grey');

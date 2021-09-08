@@ -9,7 +9,8 @@ import { updateDrop } from "../redux/actions/genshin-actions";
 import Toast from "react-native-toast-message";
 import { Picker } from "@react-native-picker/picker";
 
-const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
+//const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
+const image = {uri: "https://live.staticflickr.com/65535/50703862411_785818095d_k.jpg"};
 
 const EditDrop: React.FC = () => {
     // routing props
