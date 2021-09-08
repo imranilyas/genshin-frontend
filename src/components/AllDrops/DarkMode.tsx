@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {Switch, StyleSheet} from 'react-native';
+import { Dark } from '../../styles/style';
 
 const DarkMode = () => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
+        
+        // Switching Background Images Across Screens
+        Dark.darkMode = !Dark.darkMode;
+        Dark.setImage();
     }
+
 
     return (
         <Switch

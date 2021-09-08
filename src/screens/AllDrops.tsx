@@ -6,14 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../redux/state";
 import { GetAllDrops } from "../redux/actions/genshin-actions";
 import Header from "../components/AllDrops/Header";
-
-// Background images
-/** Dark Theme */
-//const image = {uri: "https://www.gameinformer.com/sites/default/files/styles/full/public/2021/07/09/a19505fe/genshin_impact_4.jpg"};
-/** Light Theme */
-const image = {uri: "https://i2.wp.com/www.alittlebithuman.com/wp-content/uploads/2021/06/genshin-impact-open-world-screenshot.jpg?resize=1170%2C700&ssl=1"};
+import { Dark } from "../styles/style";
+import DarkMode from "../components/AllDrops/DarkMode";
 
 const AllDrops: React.FC = () => {
+
+    let image = {uri: Dark.imageAll};
+
     const items: IItem[] = useSelector(
         (state: IAppState) => state.items
     );

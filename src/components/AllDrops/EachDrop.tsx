@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../navigation/stackTypes";
-import { useDispatch } from "react-redux";
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import IItem from "../../entities/item";
 import { StackNavigationProp } from "@react-navigation/stack";
