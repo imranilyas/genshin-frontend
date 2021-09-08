@@ -105,7 +105,7 @@ const AddDrop: React.FC = () => {
                         onValueChange={(itemValue, itemIndex) =>
                             setRarity(itemValue)
                         }>
-                        <Picker.Item label="Rarity..." value="grey" enabled = {false}/>
+                        <Picker.Item label="Rarity..." value="grey" enabled = {false} />
                         <Picker.Item label="Grey" value="grey" />
                         <Picker.Item label="Green" value="green" />
                         <Picker.Item label="Blue" value="blue" />
@@ -160,19 +160,14 @@ const styles = StyleSheet.create({
     },
 
     picker: {
-        //marginTop: '-5%',
-        color: 'black',
+        marginTop: '-5%',
+        color: 'white',
         margin: '2%',
-        backgroundColor: '#DDFFFD',
-        borderRadius: 1000/2,
     },
     
     pickerItems: {
-        textAlign: 'center',
-        alignSelf: 'center',
-        justifyContent: 'center',
         fontSize: 20,
-        borderRadius: 1000/2,
+        color: "black",
     },
     
     buttons: {

@@ -63,19 +63,46 @@ const EditDrop: React.FC = () => {
     }
 
     return(
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style = {styles.container}>
-            <ImageBackground
-                style = {styles.background}
-                source = {image}
-                resizeMode = "cover"
-            >
-                 {/* Picker */}
-                 <Picker
+        <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+        >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style = {styles.container}>
+                <ImageBackground
+                    style = {styles.background}
+                    source = {image}
+                    resizeMode = "cover"
+                >
+                    <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
+                    <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
+                    <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
+                    {/* Will need to work on this */}
+                    <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
+
+                    <View style = {styles.rateRank}>
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setMinWorldRank(Number(value))} 
+                            placeholder="Min. World Rank" 
+                            keyboardType='decimal-pad'
+                        >
+                            {minWorldRank}
+                        </TextInput>
+
+                        <TextInput 
+                            style = {styles.rateRankInput} 
+                            onChangeText={(value) => setDropRate(Number(value))} 
+                            placeholder="Drop Rate" 
+                            keyboardType='decimal-pad'
+                        >
+                            {dropRate}
+                        </TextInput>
+
+                    </View>
+                    
+                    {/* Picker */}
+                    <Picker
                         style = {styles.picker}
                         itemStyle = {styles.pickerItems}
                         selectedValue={rarity}
@@ -89,39 +116,13 @@ const EditDrop: React.FC = () => {
                         <Picker.Item label="Blue" value="blue" />
                         <Picker.Item label="Purple" value="purple" />
                     </Picker>
-
-                <TextInput style = {styles.input} onChangeText={setDropName} placeholder="Item Drop Name">{dropName}</TextInput>
-                <TextInput style = {styles.input} onChangeText={setPhoto} placeholder="Item Drop Image URL">{photo}</TextInput>
-                <TextInput style = {styles.input} onChangeText={setGeneralName} placeholder="Item Group Name">{generalName}</TextInput>
-                {/* Will need to work on this */}
-                <TextInput style = {styles.input} onChangeText={setMonsters} placeholder="Monsters">{monsters}</TextInput>
-                
-
-                <View style = {styles.rateRank}>
-                        <TextInput 
-                            style = {styles.rateRankInput} 
-                            onChangeText={(value) => setMinWorldRank(Number(value))} 
-                            placeholder="Min. World Rank" 
-                            keyboardType='decimal-pad'
-                        >
-                            {minWorldRank}
-                        </TextInput>
-                        <TextInput 
-                            style = {styles.rateRankInput} 
-                            onChangeText={(value) => setDropRate(Number(value))} 
-                            placeholder="Drop Rate" 
-                            keyboardType='decimal-pad'
-                        >
-                            {dropRate}
-                        </TextInput>
-                </View>
-                   
-                {/* Submit Button */}
-                <TouchableOpacity style = {styles.buttons} onPress = {update}>
-                    <Text style = {styles.btnText}>Update</Text>
-                </TouchableOpacity>
-            </ImageBackground>
-        </View>
+                    
+                    {/* Submit Button */}
+                    <TouchableOpacity style = {styles.buttons} onPress = {update}>
+                        <Text style = {styles.btnText}>Update</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
+            </View>
         </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     )
@@ -164,21 +165,14 @@ const styles = StyleSheet.create({
     },
 
     picker: {
-        //marginTop: '-5%',
-        //alignSelf: 'center',
-        color: 'black',
+        marginTop: '-5%',
+        color: 'white',
         margin: '2%',
-        backgroundColor: '#DDFFFD',
-        borderRadius: 1000/2,
     },
-
+    
     pickerItems: {
-        textAlign: 'center',
-        alignSelf: 'center',
-        justifyContent: 'center',
         fontSize: 20,
-        borderRadius: 1000/2,
-
+        color: "black",
     },
 
     buttons: {
