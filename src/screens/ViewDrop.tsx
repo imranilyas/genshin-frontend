@@ -8,9 +8,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { deleteDrop } from "../redux/actions/genshin-actions";
 import Toast from "react-native-toast-message";
 import Rating from "../components/Rarity/Rating";
-
-//const image = {uri: "https://pbs.twimg.com/media/Et9411BXEAUq8P5.jpg"};
-const image = {uri : "https://wallpaperaccess.com/full/5716833.jpg"};
+import { Dark } from "../styles/style";
 
 const ViewDrop: React.FC = () => {
     // Navigation
@@ -22,6 +20,10 @@ const ViewDrop: React.FC = () => {
     const route = useRoute();
     const params = route.params as IItem;
 
+    // Background Image
+    const image = {uri: Dark.imageView};
+
+    // Ask to confirm delete request
     const alerting = () => {
         Alert.alert(
             "Deleting an Item",

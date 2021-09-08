@@ -8,9 +8,7 @@ import IItem from "../entities/item";
 import { updateDrop } from "../redux/actions/genshin-actions";
 import Toast from "react-native-toast-message";
 import { Picker } from "@react-native-picker/picker";
-
-//const image = {uri: "https://i.imgur.com/PHkCmAQ.jpg"};
-const image = {uri: "https://live.staticflickr.com/65535/50703862411_785818095d_k.jpg"};
+import { Dark } from "../styles/style";
 
 const EditDrop: React.FC = () => {
     // routing props
@@ -30,6 +28,9 @@ const EditDrop: React.FC = () => {
     type main = StackNavigationProp<RootStackParamList, 'AllDrops'>
     const navigation = useNavigation<main>();
     const dispatch = useDispatch();
+
+    // Background Image
+    const image = {uri: Dark.imageEdit}
 
     const update = () => {
         const item: IItem = {
