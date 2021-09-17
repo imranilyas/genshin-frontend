@@ -1,4 +1,8 @@
-# Genshin Drops Frontend
+<p align="center">
+  <img src = "assets/images/logo.png" alt = "GenDrops Logo" height = "200" />
+</p>
+
+# GenDrops Frontend
 The backend repository can be found at the following link: https://github.com/imranilyas/RevatureApps/tree/main/project0
 
 ## Description
