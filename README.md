@@ -47,3 +47,6 @@ For deleting an item, the user is first alerted that they are trying to delete a
 * Refactor styling to a global stylesheet so that background colors and text colors can be changed upon toggling the switch.
   * Currently, only the images change.
 * The background themes in the Add, Edit, and View screen will change upon toggling the switch. However, the root screen will not change unless you refresh the flatlist. To fix that, the switch would likely need to be refactored so that a refresh is triggered upon toggling the switch.
+
+## License
+[MIT](https://github.com/imranilyas/genshin-frontend/blob/370df70590e4d8d15297b8035f7b9c53aeaddf6d/LICENSE)
